@@ -230,24 +230,138 @@ console.log("hello, V");
 // makeTask({ priority: "Low", text: "Choose shampoo" });
 // makeTask({ text: "Buy bread" });
 
-function addd(...arg) {
-  console.log(...arg);
-  // const s = Math.sum(arg);
-  let s = 0;
-  for (let i of arg) {
-    s += i;
-  }
+// function add(...arg) {
+//   console.log(...arg);
+//   // const s = Math.sum(arg);
+//   let s = 0;
+//   for (let i of arg) {
+//     s += i;
+//   }
 
-  console.log(s);
-  return s;
-}
+//   console.log(s);
+//   return s;
+// }
 
-function add(...arg) {
-  return arg.reduce((accumulator, current) => {
-    return (accumulator += current);
-  });
-}
-console.log(add(15, 27));
-add(12, 4, 11, 48);
-add(32, 6, 13, 19, 8);
-add(74, 11, 62, 46, 12, 36);
+// // function add(...arg) {
+// //   return arg.reduce((accumulator, current) => {
+// //     return (accumulator += current);
+// //   });
+// // }
+// console.log(add(15, 27));
+// add(12, 4, 11, 48);
+// add(32, 6, 13, 19, 8);
+// add(74, 11, 62, 46, 12, 36);
+
+// function findMatches(arr, ...args) {
+//   const matches = [];
+
+//   for (const arg of args) {
+//     if (arr.includes(arg)) {
+//       matches.push(arg);
+//     }
+//   }
+
+//   console.log(matches);
+//   return matches;
+// }
+
+// findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7);
+// findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2);
+// findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41);
+// findMatches([63, 11, 8, 29], 4, 7, 16);
+
+// const bookShelf = {
+//   books: ["The last kingdom", "The guardian of dreams", "Red sunset"],
+//   getBooks() {
+//     return `Returning all books: ${this.books}`;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//     console.log(this.books);
+//     return `Adding book ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//     if (this.books.includes(bookName)) {
+//       const bookIndex = this.books.indexOf(bookName);
+//       this.books.splice(bookIndex, 1);
+//     }
+//     return `Deleting book ${bookName}`;
+//   },
+//   updateBook(oldName, newName) {
+//     return `Updating book ${oldName} to ${newName}`;
+//   },
+// };
+
+// console.log(bookShelf.getBooks());
+// console.log(bookShelf.addBook("Haze"));
+// console.log(bookShelf.removeBook("Red sunset"));
+// console.log(bookShelf.updateBook("Sands of dune", "Dune"));
+// console.log(bookShelf.getBooks());
+
+const bookShelf = {
+  books: ["The last kingdom", "Haze", "The guardian of dreams"],
+  getBooks() {
+    return `Returning all books: ${this.books}`;
+  },
+
+  updateBook(oldName, newName) {
+    const bookIndex = this.books.indexOf(oldName);
+    this.books.splice(bookIndex, 1);
+    this.books.splice(bookIndex, 0, newName);
+    return `Updating book ${oldName} to ${newName}`;
+  },
+};
+
+console.log(bookShelf.getBooks());
+console.log(bookShelf.updateBook("Haze", "Dungeon chronicles"));
+console.log(bookShelf.updateBook("The last kingdom", "Dune"));
+console.log(bookShelf.getBooks());
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////
+///
+/////////////////////////////////////////
+
+console.log("....... At The Old Toad ........");
+
+const atTheOldToad = {
+  potions: ["Speed potion", "Dragon breath", "Stone skin"],
+  getPotions() {
+    return `Returning all Potions: ${this.potions}`;
+  },
+  addPotion(potionName) {
+    this.potions.push(potionName);
+    console.log(this.potions);
+    return `Adding Potion: ${potionName}`;
+  },
+  removePotion(potionName) {
+    if (this.potions.includes(potionName)) {
+      const potionIndex = this.potions.indexOf(potionName);
+      this.potions.splice(potionIndex, 1);
+    }
+    return `Deleting book ${potionName}`;
+  },
+
+  updatePotionName(oldName, newName) {
+    if (this.potions.includes(oldName)) {
+      const potionIndex = this.potions.indexOf(oldName);
+      this.potions.splice(potionIndex, 1);
+      this.potions.splice(potionIndex, 0, newName);
+    }
+    return `Updating book ${oldName} to ${newName}`;
+  },
+};
+
+console.log(atTheOldToad.getPotions());
+
+console.log(atTheOldToad.addPotion("Invisibility"));
+console.log(atTheOldToad.addPotion("Power potion"));
+console.log("After adding: ", atTheOldToad.getPotions());
+
+// console.log(atTheOldToad.removePotion("Dragon breath"));
+// console.log(atTheOldToad.removePotion("Speed potion"));
+// console.log("After deleting: ", atTheOldToad.getPotions());
+
+console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+console.log(atTheOldToad.updatePotionName("Stone skin", "Invisibility"));
+console.log("After updatind: ", atTheOldToad.getPotions());
