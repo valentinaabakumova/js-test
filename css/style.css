@@ -15,3 +15,18 @@
   /* font-style: italic; */
   font-weight: bold;
 }
+
+.header {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-class {
+  font-size: 50px;
+}
+
+/* .new-class-again {
+  font-size: 10px;
+} */
